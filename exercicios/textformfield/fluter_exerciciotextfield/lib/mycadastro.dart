@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:fluter_exerciciotextfield/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -27,7 +28,7 @@ class _mycadastroState extends State<mycadastro> {
           SizedBox(
             height: 100,
           ),
-      Image.network("https://www.gov.br/cdn/sso-status-bar/src/image/user.png", height: 120,),
+      Image.network("https://www.gov.br/cdn/sso-status-bar/src/image/user.png", height: 150,),
           SizedBox(height: 20
           ,),
           Form(
@@ -91,20 +92,16 @@ class _mycadastroState extends State<mycadastro> {
                 if (formkey.currentState!.validate()) {
                   senha = int.parse(campoSenha.text);
                   nome = campoNome.text;
-                  mostraMSGsucesso();
+                
                   setState(() {});
+                  Navigator.pushNamed(context,'/homepage');
                 }
               },
               child: Text("Entrar")),
-          Text("Bem vindo"),
+        
         ],
       )),
     );
   }
 
-  void mostraMSGsucesso() {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("BEM VINDO")));
-  }
-  //metodo
 }

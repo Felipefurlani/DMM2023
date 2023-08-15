@@ -1,5 +1,8 @@
+import 'dart:js_interop';
+
 import 'package:flutter/material.dart';
 
+import 'homepage.dart';
 import 'mycadastro.dart';
 
 void main() {
@@ -17,7 +20,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
    
         colorScheme: ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 150, 0, 0)),
-        backgroundColor: Colors.black,
+        
         useMaterial3: true,
       ),
-      home: mycadastro());}}
+      home: mycadastro(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => mycadastro(),
+        '/homepage ': (context) => homepage(), 
+      },
+
+      );
+      }}
+      
+    
+
+    
