@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:js_interop';
 
 import 'package:flutter/material.dart';
@@ -26,8 +28,8 @@ class MyApp extends StatelessWidget {
       home: mycadastro(),
       initialRoute: '/',
       routes: {
-        '/': (context) => mycadastro(),
-        '/homepage ': (context) => homepage(), 
+        '/first': (context) => mycadastro(),
+        '/second': (context) => homepage(), 
       },
 
       );

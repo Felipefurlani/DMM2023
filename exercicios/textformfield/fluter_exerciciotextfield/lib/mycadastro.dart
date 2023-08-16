@@ -20,7 +20,7 @@ class _mycadastroState extends State<mycadastro> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black12,
+     backgroundColor: Colors.black12,
       body: Center(
         
           child: Column(
@@ -28,7 +28,7 @@ class _mycadastroState extends State<mycadastro> {
           SizedBox(
             height: 100,
           ),
-      Image.network("https://www.gov.br/cdn/sso-status-bar/src/image/user.png", height: 150,),
+      Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bElLcE8p1eEjYAjKPAdv3GnGWjogcddXNQ&usqp=CAU", height: 150,),
           SizedBox(height: 20
           ,),
           Form(
@@ -37,16 +37,16 @@ class _mycadastroState extends State<mycadastro> {
                 children: [
                    TextFormField(
                     controller: campoNome,
-                    style: TextStyle(fontSize: 20 , color: Colors.white),
+                    style: TextStyle(fontSize: 20 , color: const Color.fromARGB(255, 0, 0, 0)),
                     decoration: InputDecoration(
                         labelText: 'Nome',
                         labelStyle: TextStyle(color: const Color.fromARGB(255, 255, 0, 0) ),
                         border: OutlineInputBorder(),
                         filled: true,
-                        fillColor: Color.fromARGB(25, 132, 204, 158)),
+                        fillColor: Color.fromARGB(23, 133, 21, 21)),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return ("o nome não pode ser vazio");
+                        return ("O nome não pode ser vazio");
                       } else {
                         if (campoNome.text.length < 5) {
                           return ("o nome precisa ter maior q 5 caracteres");
@@ -62,14 +62,14 @@ class _mycadastroState extends State<mycadastro> {
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly
                     ],
-                    style: TextStyle(fontSize: 20,color: Colors.white),
+                    style: TextStyle(fontSize: 20,color: Color.fromARGB(255, 0, 0, 0)),
                     decoration: InputDecoration(
 
                         labelText: 'Senha ',
                         labelStyle: TextStyle(color: Colors.red),
                         border: OutlineInputBorder(),
                         filled: true,
-                        fillColor: Color.fromARGB(25, 132, 204, 158)),
+                        fillColor: Color.fromARGB(23, 158, 46, 46)),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return ("A senha não pode ser vazia");
@@ -94,7 +94,7 @@ class _mycadastroState extends State<mycadastro> {
                   nome = campoNome.text;
                 
                   setState(() {});
-                  Navigator.pushNamed(context,'/homepage');
+                  Navigator.pushNamed(context,'/second');
                 }
               },
               child: Text("Entrar")),
