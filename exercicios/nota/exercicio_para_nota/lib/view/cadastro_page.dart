@@ -21,7 +21,7 @@ class _cadastroAlunosState extends State<cadastroAlunos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black26,
+      backgroundColor: Color.fromARGB(221, 125, 125, 125),
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("cadastro de alunos"),

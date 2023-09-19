@@ -1,6 +1,7 @@
 // ignore_for_file: duplicate_import, camel_case_types, prefer_const_constructors
 
 import 'package:exercicio_para_nota/controller/alunocontroller.dart';
+import 'package:exercicio_para_nota/model/aluno.dart';
 import 'package:flutter/material.dart';
 import 'package:exercicio_para_nota/controller/alunocontroller.dart';
 
@@ -18,6 +19,7 @@ class _lista_alunospageState extends State<lista_alunospage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(221, 125, 125, 125),
         appBar: AppBar(
           title: const Text("alunos Cadastrados"),
           centerTitle: true,
@@ -39,10 +41,20 @@ class _lista_alunospageState extends State<lista_alunospage> {
                 ),
                 title: Text(listaAlunos[index].nome),
                 subtitle: Text(listaAlunos[index].ra),
-                trailing: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.delete),
-                ),
+                trailing: SizedBox(
+                  width: 70,
+                  child: Row(children: [
+                    Expanded(child: IconButton(onPressed: (){
+
+                    },
+                    icon: Icon(Icons.edit),
+                    )),
+                    Expanded(child: IconButton(onPressed: (){
+                      Alunos al =listaAlunos[index];
+                      AlunosRepository.excluir(al);
+                    }, icon: Icon(Icons.delete))),
+                  ],),
+                  ),
               );
             }
             )),

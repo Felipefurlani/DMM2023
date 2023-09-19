@@ -17,4 +17,8 @@ static get getListaAlunos => _listaAlunos;
  void adicionar (Alunos alunos){
   _listaAlunos.add(alunos);
  }
+
+static void excluir(Alunos alunos){
+ _listaAlunos.remove(alunos);
+}
  }
