@@ -1,4 +1,5 @@
-// ignore_for_file: duplicate_import, camel_case_types, prefer_const_constructors
+// ignore_for_file: duplicate_import, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names
+
 
 import 'package:exercicio_para_nota/controller/alunocontroller.dart';
 import 'package:exercicio_para_nota/model/aluno.dart';
@@ -14,12 +15,31 @@ class lista_alunospage extends StatefulWidget {
 
 class _lista_alunospageState extends State<lista_alunospage> {
   
-  final listaAlunos = AlunosRepository.getListaAlunos;
+    List <Alunos>   listaAlunos = AlunosRepository.getListaAlunos;
+
+     List <Alunos>  listabusca=[];
+
+
+     String nomebusca="";
+
+     void initsState(){
+      listabusca = List.from(listaAlunos);
+      super.initState();
+     }
+
+     void atualizaLista(String nome){
+      listabusca = List.from(listaAlunos);
+      setState(() {
+        listabusca = listaAlunos.where((element) => (
+          element.nome.toLowerCase().contains(nome.toLowerCase())
+        )).toList();
+      });
+     }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(221, 125, 125, 125),
+      backgroundColor: Color.fromARGB(221, 206, 205, 205),
         appBar: AppBar(
           title: const Text("alunos Cadastrados"),
           centerTitle: true,
@@ -27,9 +47,31 @@ class _lista_alunospageState extends State<lista_alunospage> {
         ),
 
         body: Column(children:[
+          SizedBox(height: 30,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width: 150,height: 40,
+              child: TextField(
+                style: TextStyle(fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: 'Nome',
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Color.fromARGB(255,184,206,225),
+                  prefixIcon: Icon(Icons.search_rounded), 
+                ),
+                onChanged: (String Nome){
+                  nomebusca= Nome;
+                  atualizaLista(nomebusca);
+                }
+              ),
+              )
+            ],
+          ),
           ListView.separated(
              shrinkWrap: true,
-            itemCount: listaAlunos.length,
+            itemCount: listabusca.length,
             separatorBuilder: ((context, index) => const Divider(
                   thickness: 2,
                 )),
@@ -67,8 +109,9 @@ class _lista_alunospageState extends State<lista_alunospage> {
                 Navigator.pushNamed(context, '/');
               }, child: Text("Voltar")),
             )
-                      
+                     
             ])
+            
             );
   }
 }
