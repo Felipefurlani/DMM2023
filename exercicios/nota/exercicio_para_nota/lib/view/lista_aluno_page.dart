@@ -22,7 +22,9 @@ class _lista_alunospageState extends State<lista_alunospage> {
 
      String nomebusca="";
 
-     void initsState(){
+
+@override
+     void initState(){
       listabusca = List.from(listaAlunos);
       super.initState();
      }
@@ -30,7 +32,7 @@ class _lista_alunospageState extends State<lista_alunospage> {
      void atualizaLista(String nome){
       listabusca = List.from(listaAlunos);
       setState(() {
-        listabusca = listaAlunos.where((element) => (
+        listabusca = listaAlunos.where((Alunos element) => (
           element.nome.toLowerCase().contains(nome.toLowerCase())
         )).toList();
       });
@@ -47,11 +49,11 @@ class _lista_alunospageState extends State<lista_alunospage> {
         ),
 
         body: Column(children:[
-          SizedBox(height: 30,),
+          SizedBox(height: 40,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width: 150,height: 40,
+              SizedBox(width: 200,height: 50,
               child: TextField(
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
@@ -79,10 +81,10 @@ class _lista_alunospageState extends State<lista_alunospage> {
               return ListTile(
                 leading: CircleAvatar(
                   backgroundColor: Theme.of(context).primaryColor,
-                  child: Text(listaAlunos[index].nome[0]),
+                  child: Text(listabusca[index].nome[0]),
                 ),
-                title: Text(listaAlunos[index].nome),
-                subtitle: Text(listaAlunos[index].ra),
+                title: Text(listabusca[index].nome),
+                subtitle: Text(listabusca[index].ra),
                 trailing: SizedBox(
                   width: 70,
                   child: Row(children: [
@@ -92,7 +94,7 @@ class _lista_alunospageState extends State<lista_alunospage> {
                     icon: Icon(Icons.edit),
                     )),
                     Expanded(child: IconButton(onPressed: (){
-                      Alunos al =listaAlunos[index];
+                      Alunos al =listabusca[index];
                       AlunosRepository.excluir(al);
                     }, icon: Icon(Icons.delete))),
                   ],),
@@ -111,7 +113,7 @@ class _lista_alunospageState extends State<lista_alunospage> {
             )
                      
             ])
-            
+
             );
   }
 }
